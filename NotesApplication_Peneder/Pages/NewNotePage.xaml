@@ -1,0 +1,57 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
+    x:Class="NotesExercise03_Peneder.Pages.NewNotePage"
+    DataContext="{Binding Source={StaticResource Locator}, Path=CreateNewNoteViewModel}" 
+    mc:Ignorable="d">
+
+
+    <Page.TopAppBar>
+        <CommandBar>
+            <CommandBar.Content>
+                <AppBarButton Icon="Back" Click="AppBarButton_Click" />
+            </CommandBar.Content>
+
+            <AppBarButton Icon="Save" Click="{x:Bind ViewModel.AddNote}" 
+                         IsEnabled="{x:Bind ViewModel.CanAddNote, Mode=OneWay}"
+                          Label="Save Note"  />
+
+        </CommandBar>
+    </Page.TopAppBar>
+
+    <Grid Background="{StaticResource GradientBrush}">
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" x:Name="TxtNewNote" HorizontalAlignment="Stretch" 
+                       TextWrapping="Wrap" Text="{x:Bind ViewModel.Time, Mode=OneWay}" VerticalAlignment="Top">
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="{ThemeResource SystemAltHighColor}"/>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <TextBox x:Name="TextBoxNewNote" Grid.Column="0" Grid.Row="1" TextWrapping="Wrap"
+                     Text="{Binding Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                     AcceptsReturn="True">
+                <TextBox.BorderBrush>
+                    <SolidColorBrush Color="{ThemeResource SystemAltHighColor}" Opacity="0.5"/>
+                </TextBox.BorderBrush>
+                <TextBox.Foreground>
+                    <SolidColorBrush Color="{ThemeResource SystemAltHighColor}"/>
+                </TextBox.Foreground>
+                <TextBox.Background>
+                    <SolidColorBrush Color="White" Opacity="0.15"/>
+                </TextBox.Background>
+            </TextBox>
+        </Grid>
+
+
+    </Grid>
+</Page>

@@ -1,0 +1,48 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NotesExercise03_Peneder.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
+    xmlns:viewModels="using:NotesExercise03_Peneder.ViewModels"
+    x:Class="NotesExercise03_Peneder.Pages.NoteOverview"
+    mc:Ignorable="d"
+     DataContext="{Binding Source={StaticResource Locator},
+                            Path=NoteOverviewViewModel}">
+
+    <Page.TopAppBar>
+        <CommandBar>
+            <CommandBar.Content>
+                <AppBarButton Icon="Back" Click="AppBarButton_Click" />
+            </CommandBar.Content>
+        </CommandBar>
+    </Page.TopAppBar>
+
+    <Grid Background="{StaticResource GradientBrush}">
+
+
+        <Maps:MapControl x:Name="MapControl"  
+                          MapServiceToken="{x:Bind ViewModel.Token}"
+                         Center="{x:Bind ViewModel.Center, Mode=OneWay}"
+
+                         HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,50,0,0"
+                         ZoomLevel="{x:Bind ViewModel.Zoomlevel, Mode=TwoWay}">
+            <Maps:MapItemsControl ItemsSource="{x:Bind ViewModel.PointsOfInterest}">
+                <Maps:MapItemsControl.ItemTemplate>
+                    <DataTemplate x:DataType="viewModels:PointOfInterest">
+                        <Grid Maps:MapControl.Location="{x:Bind Geopoint}" Tapped="PushPin_OnTapped"
+                              Maps:MapControl.NormalizedAnchorPoint="0.5 1">
+                            <Image Source="../Assets/pin.png" />
+                          
+                            <TextBlock Text="{x:Bind Description}" />
+                        </Grid>
+                    </DataTemplate>
+                </Maps:MapItemsControl.ItemTemplate>
+            </Maps:MapItemsControl>
+
+        </Maps:MapControl>
+
+
+    </Grid>
+</Page>

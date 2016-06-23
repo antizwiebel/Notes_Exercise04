@@ -1,0 +1,26 @@
+﻿<Application
+    x:Class="NotesExercise03_Peneder.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:viewModels="using:NotesExercise03_Peneder.ViewModels"
+    xmlns:notesExercise03Peneder="using:NotesExercise03_Peneder"
+    xmlns:converters="using:NotesExercise03_Peneder.Converters"
+    RequestedTheme="Light">
+    <Application.Resources>
+        <x:String x:Key="Appname">Note</x:String>
+        
+       
+        <LinearGradientBrush x:Key="GradientBrush" EndPoint="0.5,1" StartPoint="0.5,0">
+            <LinearGradientBrush.RelativeTransform>
+                <CompositeTransform CenterY="0.5" CenterX="0.5" Rotation="338.199" TranslateX="0.35"/>
+            </LinearGradientBrush.RelativeTransform>
+            <GradientStop Color="#FF00A1F1" Offset="0.5"/>
+            <GradientStop Color="#FF00A1F1" Offset="0.5"/>
+            <GradientStop Color="#FF7CBB00" Offset="0.5"/>
+            <GradientStop Color="#FF7CBB00" Offset="0.5"/>
+        </LinearGradientBrush>
+        <notesExercise03Peneder:ViewModelLocator x:Key="Locator" />
+        <converters:FormatConverter x:Key="FormatConverter" />
+        <converters:ObjectConverter x:Key="ObjectConverter"></converters:ObjectConverter>
+    </Application.Resources>
+</Application>

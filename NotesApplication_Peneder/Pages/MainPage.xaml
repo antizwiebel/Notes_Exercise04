@@ -1,0 +1,80 @@
+﻿<Page
+    x:Class="NotesExercise03_Peneder.Pages.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    DataContext="{Binding Source={StaticResource Locator},
+                            Path=MainViewModel}">
+    <Page.Background>
+        <ImageBrush Stretch="Fill"/>
+    </Page.Background>
+
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{StaticResource GradientBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image  Grid.Column="0" Grid.Row="0" Source="ms-appx:///Assets/note-4.png"/>
+            <Button x:Name="ButtonNewNote"  Grid.Column="0" Grid.Row="1"
+                Click="{x:Bind ViewModel.NavigateToNewNotePage}"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Content="Create New Note" Margin="0,10,0,10">
+                <Button.Foreground>
+                    <SolidColorBrush Color="{ThemeResource SystemAltHighColor}"/>
+                </Button.Foreground>
+                <Button.BorderBrush>
+                    <SolidColorBrush Color="White" Opacity="0.5"/>
+                </Button.BorderBrush>
+            </Button>
+            <Button x:Name="ButtonReadNotes" Grid.Column="0" Grid.Row="2"
+                     Click="{x:Bind ViewModel.NavigateToReadNotePage}"
+                   HorizontalAlignment="Stretch"
+                   Content="Read Notes"
+                   VerticalAlignment="Stretch" Margin="0,10,0,10" >
+                <Button.Foreground>
+                    <SolidColorBrush Color="{ThemeResource SystemAltHighColor}"/>
+                </Button.Foreground>
+                <Button.BorderBrush>
+                    <SolidColorBrush Color="White" Opacity="0.5"/>
+                </Button.BorderBrush>
+            </Button>
+            <Button x:Name="ButtonSettings" Grid.Column="0" Grid.Row="3"
+                     Click="{x:Bind ViewModel.NavigateToSettingsPage}"
+                   HorizontalAlignment="Stretch"
+                   Content="Settings"
+                   VerticalAlignment="Stretch" Margin="0,10,0,10" >
+                <Button.Foreground>
+                    <SolidColorBrush Color="{ThemeResource SystemAltHighColor}"/>
+                </Button.Foreground>
+                <Button.BorderBrush>
+                    <SolidColorBrush Color="White" Opacity="0.5"/>
+                </Button.BorderBrush>
+            </Button>
+            <Button x:Name="ButtonNoteOverview" Grid.Column="0" Grid.Row="4"
+                     Click="{x:Bind ViewModel.NavigateToNoteOverviewPage}"
+                   HorizontalAlignment="Stretch"
+                   Content="Overview of your Notes"
+                   VerticalAlignment="Stretch" Margin="0,10,0,10" >
+                <Button.Foreground>
+                    <SolidColorBrush Color="{ThemeResource SystemAltHighColor}"/>
+                </Button.Foreground>
+                <Button.BorderBrush>
+                    <SolidColorBrush Color="White" Opacity="0.5"/>
+                </Button.BorderBrush>
+            </Button>
+        </Grid>
+    </Grid>
+</Page>
